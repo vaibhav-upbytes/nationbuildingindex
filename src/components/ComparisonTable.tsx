@@ -21,7 +21,7 @@ export function ComparisonTable({ rows }: ComparisonTableProps) {
         </thead>
         <tbody className="divide-y divide-slate-200 text-slate-700">
           {rows.map((row) => (
-            <tr key={row.category} className="align-top">
+            <tr key={`${row.category}-${row.metric}`} className="align-top">
               <td className="px-4 py-4 font-semibold text-slate-950">
                 {row.category}
               </td>

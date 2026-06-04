@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ComparisonTable } from "@/components/ComparisonTable";
-import { DirectIncomeTaxSection } from "@/components/DirectIncomeTaxSection";
-import { EconomicGrowthSection } from "@/components/EconomicGrowthSection";
-import { EducationDevelopmentSection } from "@/components/EducationDevelopmentSection";
-import { HighwayExpresswayDevelopmentSection } from "@/components/HighwayExpresswayDevelopmentSection";
-import { InflationStabilitySection } from "@/components/InflationStabilitySection";
-import { MetroRailDevelopmentSection } from "@/components/MetroRailDevelopmentSection";
-import { MiscellaneousSection } from "@/components/MiscellaneousSection";
-import { PowerElectricitySection } from "@/components/PowerElectricitySection";
-import { RailwayDevelopmentSection } from "@/components/RailwayDevelopmentSection";
-import { RuralElectrificationSection } from "@/components/RuralElectrificationSection";
-import { RuralRoadDevelopmentSection } from "@/components/RuralRoadDevelopmentSection";
-import { UrbanHousingDevelopmentSection } from "@/components/UrbanHousingDevelopmentSection";
-import { WaterDevelopmentSection } from "@/components/WaterDevelopmentSection";
 import { comparisonData } from "@/data/comparison-data";
 
 export const metadata: Metadata = {
@@ -23,36 +11,28 @@ export const metadata: Metadata = {
 
 export default function DataPage() {
   return (
-    <>
-      <section className="mx-auto max-w-6xl px-4 py-12">
+    <section className="mx-auto max-w-6xl px-4 py-12">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase text-teal-700">Data</p>
           <h1 className="mt-3 text-3xl font-bold text-slate-950">
             Static comparison table
           </h1>
           <p className="mt-5 leading-7 text-slate-700">
-            All verified categories are shown in one place with source-backed
-            metrics from official reports, ministry pages, annual reports, or
-            public datasets.
+            All verified metrics are shown in one place. Use the homepage
+            dashboard for category-by-category exploration.
           </p>
         </div>
-        <div className="mt-10">
-          <ComparisonTable rows={comparisonData} />
-        </div>
-      </section>
-      <RuralRoadDevelopmentSection />
-      <RuralElectrificationSection />
-      <UrbanHousingDevelopmentSection />
-      <WaterDevelopmentSection />
-      <PowerElectricitySection />
-      <RailwayDevelopmentSection />
-      <MetroRailDevelopmentSection />
-      <HighwayExpresswayDevelopmentSection />
-      <EducationDevelopmentSection />
-      <EconomicGrowthSection />
-      <InflationStabilitySection />
-      <DirectIncomeTaxSection />
-      <MiscellaneousSection />
-    </>
+        <Link
+          href="/"
+          className="w-fit rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+        >
+          Open Dashboard
+        </Link>
+      </div>
+      <div className="mt-10">
+        <ComparisonTable rows={comparisonData} />
+      </div>
+    </section>
   );
 }

@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "NamoVsMMS | Modi Government vs Manmohan Singh Government",
+    default: "India Development Tracker – Compare Governments Through Data",
     template: "%s | NamoVsMMS",
   },
   description:
-    "A neutral, static comparison of completed work and measurable outcomes from the Manmohan Singh and Narendra Modi governments.",
+    "Compare government performance across rural development, railways, power, highways, education, economy, inflation, taxation, fuel prices and currency movement using official data sources.",
   keywords: [
     "NamoVsMMS",
     "Narendra Modi government",
