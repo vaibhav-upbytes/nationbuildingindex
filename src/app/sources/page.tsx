@@ -36,9 +36,8 @@ export default function SourcesPage() {
           Official source categories
         </h1>
         <p className="mt-5 leading-7 text-slate-700">
-          Values should be marked verified only when they can be traced to
-          official source material. Placeholder data remains pending until that
-          verification is complete.
+          Values should be included in the public comparison only when they can
+          be traced to official source material.
         </p>
       </div>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">

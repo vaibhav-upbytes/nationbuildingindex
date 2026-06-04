@@ -40,7 +40,7 @@ export function ComparisonTable({ rows }: ComparisonTableProps) {
               </td>
               <td className="px-4 py-4">{row.unit}</td>
               <td className="px-4 py-4">
-                <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-800">
+                <span className="rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-800">
                   {row.status}
                 </span>
               </td>

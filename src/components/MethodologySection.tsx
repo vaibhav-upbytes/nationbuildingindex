@@ -24,7 +24,7 @@ export function MethodologySection() {
           Require source-backed claims
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-700">
-          Values remain pending until supported by official reports, ministry
+          Values are included only when supported by official reports, ministry
           websites, annual reports, or public datasets.
         </p>
       </article>

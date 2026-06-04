@@ -97,9 +97,10 @@ function HousingComparisonChart() {
                 {row.label}
               </p>
               <div className="mt-3 space-y-3">
-                {row.values.map((item) => {
+                {row.values.map((item, index) => {
                   const width =
                     maxValue > 0 ? `${(item.value / maxValue) * 100}%` : "0%";
+                  const color = index > 0 ? "bg-[#ff9933]" : "bg-teal-700";
 
                   return (
                     <div key={`${row.label}-${item.period}`}>
@@ -113,7 +114,7 @@ function HousingComparisonChart() {
                       </div>
                       <div className="mt-2 h-3 rounded-full bg-slate-100">
                         <div
-                          className="h-3 rounded-full bg-teal-700"
+                          className={`h-3 rounded-full ${color}`}
                           style={{ width }}
                           aria-label={`${row.label}, ${item.period}: ${formatLakh(item.value)}`}
                         />

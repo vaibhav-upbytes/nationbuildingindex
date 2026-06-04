@@ -24,8 +24,8 @@ export default function MethodologyPage() {
         <p className="mt-4 leading-7 text-slate-700">
           Each category should use comparable metrics across the Manmohan Singh
           government period of 2004–2014 and the Narendra Modi government period
-          of 2014–Present. Any claim should stay marked as pending until the
-          number is backed by a clearly cited official source.
+          of 2014–Present. Any claim should be added only after the number is
+          backed by a clearly cited official source.
         </p>
       </div>
       <div className="mt-10">

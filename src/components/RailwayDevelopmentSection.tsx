@@ -19,8 +19,9 @@ function BarChart({
     <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 className="text-lg font-semibold text-slate-950">{title}</h3>
       <div className="mt-5 space-y-4">
-        {rows.map((row) => {
+        {rows.map((row, index) => {
           const width = maxValue > 0 ? `${(row.value / maxValue) * 100}%` : "0%";
+          const color = index > 0 ? "bg-[#ff9933]" : "bg-teal-700";
 
           return (
             <div key={row.label}>
@@ -32,7 +33,7 @@ function BarChart({
               </div>
               <div className="mt-2 h-3 rounded-full bg-slate-100">
                 <div
-                  className="h-3 rounded-full bg-teal-700"
+                  className={`h-3 rounded-full ${color}`}
                   style={{ width }}
                   aria-label={`${row.label}: ${row.display}`}
                 />
@@ -96,9 +97,10 @@ function ElectrificationCard() {
           Electrification work comparison
         </h4>
         <div className="mt-4 space-y-4">
-          {periodRows.map((row) => {
+          {periodRows.map((row, index) => {
             const width =
               maxValue > 0 ? `${(row.value / maxValue) * 100}%` : "0%";
+            const color = index > 0 ? "bg-[#ff9933]" : "bg-teal-700";
 
             return (
               <div key={`${row.label}-bar`}>
@@ -112,7 +114,7 @@ function ElectrificationCard() {
                 </div>
                 <div className="mt-2 h-3 rounded-full bg-slate-100">
                   <div
-                    className="h-3 rounded-full bg-teal-700"
+                    className={`h-3 rounded-full ${color}`}
                     style={{ width }}
                     aria-label={`${row.label}: ${row.display}`}
                   />

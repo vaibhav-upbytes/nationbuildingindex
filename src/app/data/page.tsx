@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
 import { ComparisonTable } from "@/components/ComparisonTable";
+import { DirectIncomeTaxSection } from "@/components/DirectIncomeTaxSection";
+import { EconomicGrowthSection } from "@/components/EconomicGrowthSection";
+import { EducationDevelopmentSection } from "@/components/EducationDevelopmentSection";
+import { HighwayExpresswayDevelopmentSection } from "@/components/HighwayExpresswayDevelopmentSection";
+import { InflationStabilitySection } from "@/components/InflationStabilitySection";
+import { MetroRailDevelopmentSection } from "@/components/MetroRailDevelopmentSection";
+import { MiscellaneousSection } from "@/components/MiscellaneousSection";
+import { PowerElectricitySection } from "@/components/PowerElectricitySection";
 import { RailwayDevelopmentSection } from "@/components/RailwayDevelopmentSection";
+import { RuralElectrificationSection } from "@/components/RuralElectrificationSection";
 import { RuralRoadDevelopmentSection } from "@/components/RuralRoadDevelopmentSection";
 import { UrbanHousingDevelopmentSection } from "@/components/UrbanHousingDevelopmentSection";
+import { WaterDevelopmentSection } from "@/components/WaterDevelopmentSection";
 import { comparisonData } from "@/data/comparison-data";
 
 export const metadata: Metadata = {
   title: "Data",
   description:
-    "Static comparison table for NamoVsMMS categories, with pending placeholders until source verification.",
+    "Static comparison table for verified NamoVsMMS categories and source-backed metrics.",
 };
 
 export default function DataPage() {
@@ -21,9 +31,9 @@ export default function DataPage() {
             Static comparison table
           </h1>
           <p className="mt-5 leading-7 text-slate-700">
-            All categories are shown in one place. Current values are
-            placeholders until the relevant official reports, ministry pages,
-            annual reports, or public datasets are checked.
+            All verified categories are shown in one place with source-backed
+            metrics from official reports, ministry pages, annual reports, or
+            public datasets.
           </p>
         </div>
         <div className="mt-10">
@@ -31,8 +41,18 @@ export default function DataPage() {
         </div>
       </section>
       <RuralRoadDevelopmentSection />
+      <RuralElectrificationSection />
       <UrbanHousingDevelopmentSection />
+      <WaterDevelopmentSection />
+      <PowerElectricitySection />
       <RailwayDevelopmentSection />
+      <MetroRailDevelopmentSection />
+      <HighwayExpresswayDevelopmentSection />
+      <EducationDevelopmentSection />
+      <EconomicGrowthSection />
+      <InflationStabilitySection />
+      <DirectIncomeTaxSection />
+      <MiscellaneousSection />
     </>
   );
 }
