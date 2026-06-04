@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { CategoryDetail } from "@/components/CategoryDetail";
-import { CategorySelector } from "@/components/CategorySelector";
 import { OverviewDashboard } from "@/components/OverviewDashboard";
 import { categories } from "@/data/categories";
 import { comparisonData } from "@/data/comparison-data";
@@ -111,13 +110,6 @@ export function DashboardExperience() {
 
   return (
     <>
-      <CategorySelector
-        categories={categories}
-        selectedId={selectedId}
-        onSelect={selectCategory}
-        onOverview={showOverview}
-      />
-
       {selectedCategory ? (
         <CategoryDetail
           category={selectedCategory}

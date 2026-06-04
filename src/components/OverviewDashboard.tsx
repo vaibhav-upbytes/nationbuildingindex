@@ -1,5 +1,4 @@
 import { CategoryCard } from "@/components/CategoryCard";
-import { KpiCard } from "@/components/KpiCard";
 import { SearchBox } from "@/components/SearchBox";
 import type { CategorySummary } from "@/data/categories";
 
@@ -45,6 +44,7 @@ const topInsights = [
     label: "Power shortage",
     before: "4.2%",
     after: "0.03%",
+    negativeIndicator: true,
   },
   {
     label: "NH network",
@@ -60,11 +60,13 @@ const topInsights = [
     label: "Inflation average",
     before: "8.2%",
     after: "5.0%",
+    negativeIndicator: true,
   },
   {
     label: "Direct tax on ₹20 LPA",
     before: "₹4.02 lakh",
     after: "₹2.34 lakh",
+    negativeIndicator: true,
   },
   {
     label: "Household electrification",
@@ -72,6 +74,75 @@ const topInsights = [
     after: "2.86 crore households",
   },
 ];
+
+function numericInsightValue(value: string) {
+  if (value.toLowerCase().includes("not achieved")) {
+    return 0;
+  }
+
+  const numeric = Number(value.replace(/[^0-9.-]/g, ""));
+
+  return Number.isFinite(numeric) ? Math.abs(numeric) : 0;
+}
+
+function InsightBarCard({
+  label,
+  before,
+  after,
+  negativeIndicator,
+}: {
+  label: string;
+  before: string;
+  after: string;
+  negativeIndicator?: boolean;
+}) {
+  const beforeValue = numericInsightValue(before);
+  const afterValue = numericInsightValue(after);
+  const maxValue = Math.max(beforeValue, afterValue, 1);
+  const beforeWidth = Math.max(6, (beforeValue / maxValue) * 100);
+  const afterWidth = Math.max(6, (afterValue / maxValue) * 100);
+
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <h3 className="min-h-12 text-base font-semibold leading-6 text-slate-950">
+        {label}
+      </h3>
+
+      <div
+        className="mt-5 space-y-4"
+        aria-label={`${label}: 2004 to 2014 ${before}, 2014 onwards ${after}`}
+      >
+        <div>
+          <div className="flex items-center justify-between gap-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <span>2004–2014</span>
+            <span className="text-right text-slate-800">{before}</span>
+          </div>
+          <div className="mt-2 h-3 overflow-hidden rounded-full bg-slate-100">
+            <div
+              className={`h-full rounded-full ${
+                negativeIndicator ? "bg-red-600" : "bg-teal-600"
+              }`}
+              style={{ width: `${beforeWidth}%` }}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between gap-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <span>2014–Present</span>
+            <span className="text-right text-slate-800">{after}</span>
+          </div>
+          <div className="mt-2 h-3 overflow-hidden rounded-full bg-slate-100">
+            <div
+              className="h-full rounded-full bg-[#ff9933]"
+              style={{ width: `${afterWidth}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function OverviewDashboard({
   categories,
@@ -155,7 +226,7 @@ export function OverviewDashboard({
           </div>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {topInsights.map((insight) => (
-              <KpiCard key={insight.label} {...insight} />
+              <InsightBarCard key={insight.label} {...insight} />
             ))}
           </div>
         </section>
