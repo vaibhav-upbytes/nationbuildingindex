@@ -5,13 +5,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "India Development Tracker – Compare Governments Through Data",
-    template: "%s | NamoVsMMS",
+    default: "Nation Building Index – Compare Development Outcomes Through Data",
+    template: "%s | Nation Building Index",
   },
   description:
-    "Compare government performance across rural development, railways, power, highways, education, economy, inflation, taxation, fuel prices and currency movement using official data sources.",
+    "Nation Building Index helps citizens compare governance outcomes across infrastructure, economy, education, energy, taxation, inflation and public services using official data sources and long-term development trends.",
   keywords: [
-    "NamoVsMMS",
+    "Nation Building Index",
+    "nationbuildingindex.com",
     "Narendra Modi government",
     "Manmohan Singh government",
     "India development comparison",

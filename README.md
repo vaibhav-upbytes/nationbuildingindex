@@ -1,8 +1,11 @@
-# NamoVsMMS
+# Nation Building Index
 
 A simple static website built with Next.js 16, TypeScript, and Tailwind CSS.
 
-The site compares the Narendra Modi government and Manmohan Singh government using measurable completed work and outcomes. It does not compare government spending or political claims.
+The site compares governance outcomes across infrastructure, economy, education,
+energy, taxation, inflation, and public services using measurable completed work
+and official data sources. It does not compare government spending or political
+claims.
 
 ## Development
 

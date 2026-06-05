@@ -4,7 +4,7 @@ import { MethodologySection } from "@/components/MethodologySection";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "How NamoVsMMS compares completed work and measurable outcomes using source-backed claims.",
+    "How Nation Building Index compares completed work and measurable outcomes using source-backed claims.",
 };
 
 export default function MethodologyPage() {

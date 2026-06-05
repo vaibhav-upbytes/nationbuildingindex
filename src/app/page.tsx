@@ -4,9 +4,9 @@ import { DashboardExperience } from "@/components/DashboardExperience";
 import { Hero } from "@/components/Hero";
 
 export const metadata: Metadata = {
-  title: "India Development Tracker – Compare Governments Through Data",
+  title: "Nation Building Index – Compare Development Outcomes Through Data",
   description:
-    "Compare government performance across rural development, railways, power, highways, education, economy, inflation, taxation, fuel prices and currency movement using official data sources.",
+    "Nation Building Index helps citizens compare governance outcomes across infrastructure, economy, education, energy, taxation, inflation and public services using official data sources and long-term development trends.",
 };
 
 export default function HomePage() {

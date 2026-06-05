@@ -6,7 +6,7 @@ import { comparisonData } from "@/data/comparison-data";
 export const metadata: Metadata = {
   title: "Data",
   description:
-    "Static comparison table for verified NamoVsMMS categories and source-backed metrics.",
+    "Static comparison table for verified Nation Building Index categories and source-backed metrics.",
 };
 
 export default function DataPage() {

@@ -153,7 +153,7 @@ export function OverviewDashboard({
   onSelectCategory,
 }: OverviewDashboardProps) {
   return (
-    <section className="bg-slate-50">
+    <section id="category-dashboard" className="scroll-mt-6 bg-slate-50">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <SummaryCard

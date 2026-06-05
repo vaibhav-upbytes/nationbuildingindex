@@ -22,7 +22,7 @@ const sourceCategories = [
 export const metadata: Metadata = {
   title: "Sources",
   description:
-    "Official source categories used for future verified NamoVsMMS comparison data.",
+    "Official source categories used for future verified Nation Building Index comparison data.",
 };
 
 export default function SourcesPage() {
