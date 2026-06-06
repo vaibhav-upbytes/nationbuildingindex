@@ -76,10 +76,16 @@ export function Hero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="#category-dashboard"
-              className="rounded-md bg-white px-5 py-3 text-center text-sm font-semibold text-slate-950 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950"
-              style={{ backgroundColor: "#ffffff", color: "#0f172a" }}
+              className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-center text-sm font-semibold text-slate-950 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950"
+              style={{
+                backgroundColor: "#ffffff",
+                color: "#0f172a",
+                WebkitTextFillColor: "#0f172a",
+              }}
             >
-              Explore the Index
+              <span style={{ color: "#0f172a", WebkitTextFillColor: "#0f172a" }}>
+                Explore the Index
+              </span>
             </Link>
             <Link
               href="/methodology/"

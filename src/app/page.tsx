@@ -28,10 +28,16 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/methodology/"
-              className="rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-              style={{ backgroundColor: "#020617", color: "#ffffff" }}
+              className="inline-flex items-center justify-center rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+              style={{
+                backgroundColor: "#020617",
+                color: "#ffffff",
+                WebkitTextFillColor: "#ffffff",
+              }}
             >
-              Methodology
+              <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>
+                Methodology
+              </span>
             </Link>
             <Link
               href="/sources/"

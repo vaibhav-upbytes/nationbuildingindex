@@ -16,7 +16,7 @@ export function CategoryCard({
       type="button"
       onClick={() => onSelect(category.id)}
       aria-pressed={isActive}
-      className={`group flex h-full min-h-52 flex-col rounded-lg border p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 ${
+      className={`group flex h-full min-h-52 cursor-pointer flex-col rounded-lg border p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 ${
         isActive
           ? "border-teal-500 bg-teal-50"
           : "border-slate-200 bg-white hover:border-slate-300"
@@ -42,7 +42,7 @@ export function CategoryCard({
         </span>{" "}
         {category.headlineMetric.before} → {category.headlineMetric.after}
       </span>
-      <span className="mt-auto pt-4 text-sm font-semibold text-teal-700 group-hover:text-teal-900">
+      <span className="mt-auto cursor-pointer pt-4 text-sm font-semibold text-teal-700 group-hover:text-teal-900">
         View Details
       </span>
     </button>

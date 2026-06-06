@@ -14,6 +14,7 @@ import { RailwayDevelopmentSection } from "@/components/RailwayDevelopmentSectio
 import { RuralElectrificationSection } from "@/components/RuralElectrificationSection";
 import { RuralRoadDevelopmentSection } from "@/components/RuralRoadDevelopmentSection";
 import { SourceList } from "@/components/SourceList";
+import { getSourcesByCategory } from "@/data/sources";
 import type { ComparisonRow } from "@/data/comparison-data";
 import type { CategorySummary } from "@/data/categories";
 
@@ -47,6 +48,7 @@ export function CategoryDetail({
 }: CategoryDetailProps) {
   const EvidenceSection = detailComponents[category.id];
   const kpiRows = rows.slice(0, 6);
+  const categorySources = getSourcesByCategory(category.title);
 
   return (
     <section className="bg-slate-50">
@@ -56,7 +58,7 @@ export function CategoryDetail({
           onClick={onBack}
           className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
         >
-          Back to Overview
+          Back to Category Explorer
         </button>
 
         <header className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
@@ -128,7 +130,10 @@ export function CategoryDetail({
             before={category.headlineMetric.before}
             after={category.headlineMetric.after}
           />
-          <SourceList sources={category.sourceLabels} />
+          <SourceList
+            sources={category.sourceLabels}
+            sourceReferences={categorySources}
+          />
         </div>
 
         <section className="mt-6">
@@ -148,6 +153,48 @@ export function CategoryDetail({
             period label.
           </ContextBox>
         </div>
+
+        {categorySources.length > 0 ? (
+          <section className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase text-teal-700">
+                  Verification
+                </p>
+                <h3 className="mt-1 text-xl font-bold text-slate-950">
+                  Sources Used
+                </h3>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {categorySources.map((source) => (
+                <article
+                  key={source.id}
+                  className="rounded-lg border border-slate-200 bg-slate-50 p-5"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    {source.organization}
+                  </p>
+                  <h4 className="mt-2 text-base font-semibold text-slate-950">
+                    {source.title}
+                  </h4>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">
+                    {source.description}
+                  </p>
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                  >
+                    Visit Source
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap justify-between gap-3">
           <button

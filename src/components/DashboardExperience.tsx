@@ -64,7 +64,27 @@ export function DashboardExperience() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setSelectedId(getCategoryFromLocation());
+    function syncCategoryFromLocation() {
+      const nextCategory = getCategoryFromLocation();
+      const requestedHash = window.location.hash.replace("#", "");
+
+      setSelectedId(nextCategory);
+
+      if (!nextCategory && requestedHash === "category-dashboard") {
+        window.requestAnimationFrame(() => {
+          document.getElementById("category-dashboard")?.scrollIntoView({
+            block: "start",
+          });
+        });
+      }
+    }
+
+    syncCategoryFromLocation();
+    window.addEventListener("hashchange", syncCategoryFromLocation);
+
+    return () => {
+      window.removeEventListener("hashchange", syncCategoryFromLocation);
+    };
   }, []);
 
   const filteredCategories = useMemo(() => {
@@ -95,7 +115,12 @@ export function DashboardExperience() {
 
   function showOverview() {
     setSelectedId(null);
-    window.history.replaceState(null, "", window.location.pathname);
+    window.history.replaceState(null, "", `#category-dashboard`);
+    window.requestAnimationFrame(() => {
+      document.getElementById("category-dashboard")?.scrollIntoView({
+        block: "start",
+      });
+    });
   }
 
   function selectOffsetCategory(offset: number) {
