@@ -77,6 +77,7 @@ export function Hero() {
             <Link
               href="#category-dashboard"
               className="rounded-md bg-white px-5 py-3 text-center text-sm font-semibold text-slate-950 shadow-sm hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950"
+              style={{ backgroundColor: "#ffffff", color: "#0f172a" }}
             >
               Explore the Index
             </Link>

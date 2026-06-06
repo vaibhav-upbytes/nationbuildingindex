@@ -29,6 +29,7 @@ export default function HomePage() {
             <Link
               href="/methodology/"
               className="rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+              style={{ backgroundColor: "#020617", color: "#ffffff" }}
             >
               Methodology
             </Link>
