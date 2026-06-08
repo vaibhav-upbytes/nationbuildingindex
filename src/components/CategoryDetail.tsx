@@ -158,10 +158,7 @@ export function CategoryDetail({
           <section className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase text-teal-700">
-                  Verification
-                </p>
-                <h3 className="mt-1 text-xl font-bold text-slate-950">
+                <h3 className="text-xl font-bold text-slate-950">
                   Sources Used
                 </h3>
               </div>
@@ -207,8 +204,16 @@ export function CategoryDetail({
             </div>
           </section>
         ) : null}
+      </div>
 
-        <div className="mt-6 flex flex-wrap justify-between gap-3">
+      {EvidenceSection ? (
+        <div className="border-t border-slate-200">
+          <EvidenceSection />
+        </div>
+      ) : null}
+
+      <div className="mx-auto max-w-6xl px-4 pb-10">
+        <div className="flex flex-wrap justify-between gap-3">
           <button
             type="button"
             onClick={onPrevious}
@@ -225,12 +230,6 @@ export function CategoryDetail({
           </button>
         </div>
       </div>
-
-      {EvidenceSection ? (
-        <div className="border-t border-slate-200">
-          <EvidenceSection />
-        </div>
-      ) : null}
     </section>
   );
 }

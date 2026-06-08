@@ -50,7 +50,7 @@ export const ruralRoadDevelopment = {
       ],
       sourceSnapshot: {
         period: "2004-2014",
-        endpoint: "https://pmgsy.dord.gov.in/dbweb/Home/PMGSYHalfView",
+        endpoint: "https://pmgsy.dord.gov.in/dbweb",
         fromDate: "2004-05-01",
         toDate: "2014-06-01",
         schemeIds: "1,2,3,4,5,6,7",
@@ -89,7 +89,7 @@ export const ruralRoadDevelopment = {
       ],
       sourceSnapshot: {
         period: "2014-2026",
-        endpoint: "https://pmgsy.dord.gov.in/dbweb/Home/PMGSYHalfView",
+        endpoint: "https://pmgsy.dord.gov.in/dbweb",
         fromDate: "2014-06-01",
         toDate: "2026-06-01",
         schemeIds: "1,2,3,4,5,6,7",

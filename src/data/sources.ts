@@ -5,24 +5,20 @@ export interface SourceReference {
   organization: string;
   url: string;
   description: string;
+  periodBadges?: string[];
 }
 
+export const comparisonPeriodBadges = ["2004-2014", "2014-2024"];
+
 export const sources: SourceReference[] = [
-  {
-    id: "pmgsy-ommas",
-    category: "Rural Development",
-    title: "OMMAS PMGSY Dashboard",
-    organization: "Ministry of Rural Development",
-    url: "https://omms.nic.in/",
-    description: "PMGSY road and bridge completion statistics from the official online monitoring system.",
-  },
   {
     id: "pmgsy-official",
     category: "Rural Development",
     title: "PMGSY Official Portal",
     organization: "Ministry of Rural Development",
-    url: "https://pmgsy.nic.in/",
-    description: "Scheme information, reports, and reference material for rural road development under PMGSY.",
+    url: "https://pmgsy.dord.gov.in/",
+    description:
+      "Official PMGSY portal used with captured HTML snapshots for rural road development verification.",
   },
   {
     id: "railways-core",
@@ -30,7 +26,8 @@ export const sources: SourceReference[] = [
     title: "Indian Railways CORE",
     organization: "Indian Railways",
     url: "https://core.indianrailways.gov.in/",
-    description: "Railway electrification records and technical references from Central Organisation for Railway Electrification.",
+    description:
+      "Railway electrification records and technical references from Central Organisation for Railway Electrification.",
   },
   {
     id: "railways-pib-review",
@@ -38,7 +35,8 @@ export const sources: SourceReference[] = [
     title: "PIB Railway Development Review",
     organization: "Indian Railways",
     url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199",
-    description: "Railway electrification, track laying, coach manufacturing, safety infrastructure and station modernization.",
+    description:
+      "Railway electrification, track laying, coach manufacturing, safety infrastructure and station modernization.",
   },
   {
     id: "rural-electrification-pib",
@@ -46,7 +44,8 @@ export const sources: SourceReference[] = [
     title: "DDUGJY and Saubhagya Progress Release",
     organization: "Ministry of Power",
     url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1883918",
-    description: "DDUGJY, Saubhagya, village electrification and household electrification references.",
+    description:
+      "DDUGJY, Saubhagya, village electrification and household electrification references.",
   },
   {
     id: "power-electricity-pib",
@@ -54,7 +53,8 @@ export const sources: SourceReference[] = [
     title: "Electricity Sector Review",
     organization: "Ministry of Power",
     url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2241822",
-    description: "Installed capacity, power shortage, electricity access, renewable energy and transmission infrastructure.",
+    description:
+      "Installed capacity, power shortage, electricity access, renewable energy and transmission infrastructure.",
   },
   {
     id: "highway-expressway-pib",
@@ -62,7 +62,8 @@ export const sources: SourceReference[] = [
     title: "Year End Review 2025",
     organization: "Ministry of Road Transport & Highways",
     url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209837",
-    description: "National highways, expressways, Bharatmala, SARDP-NE and logistics infrastructure.",
+    description:
+      "National highways, expressways, Bharatmala, SARDP-NE and logistics infrastructure.",
   },
   {
     id: "education-pib",
@@ -70,7 +71,8 @@ export const sources: SourceReference[] = [
     title: "Education Development Press Note",
     organization: "Ministry of Education",
     url: "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154714",
-    description: "Universities, colleges, IITs, IIMs, AIIMS, EMRS schools and educational expansion.",
+    description:
+      "Universities, colleges, IITs, IIMs, AIIMS, EMRS schools and educational expansion.",
   },
   {
     id: "economic-growth-pib",
@@ -78,7 +80,8 @@ export const sources: SourceReference[] = [
     title: "Economic Growth Press Note",
     organization: "PIB / MoSPI",
     url: "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154660",
-    description: "GDP growth, exports, services sector and economic transformation indicators.",
+    description:
+      "GDP growth, exports, services sector and economic transformation indicators.",
   },
   {
     id: "economy-reference",
@@ -86,7 +89,8 @@ export const sources: SourceReference[] = [
     title: "Economy of India Reference Dataset",
     organization: "Reference Dataset",
     url: "https://en.wikipedia.org/wiki/Economy_of_India",
-    description: "Reference context for GDP, sector composition and long-term economic indicators.",
+    description:
+      "Reference context for GDP, sector composition and long-term economic indicators.",
   },
   {
     id: "inflation-pib",
@@ -102,7 +106,8 @@ export const sources: SourceReference[] = [
     title: "Income Tax Department",
     organization: "Income Tax Department",
     url: "https://www.incometax.gov.in/",
-    description: "Historical and current income tax references used in tax comparison calculations.",
+    description:
+      "Historical and current income tax references used in tax comparison calculations.",
   },
   {
     id: "union-budget",
@@ -110,7 +115,8 @@ export const sources: SourceReference[] = [
     title: "Union Budget",
     organization: "Union Budget",
     url: "https://www.indiabudget.gov.in/",
-    description: "Budget documents and tax slab announcements used for current tax regime comparison.",
+    description:
+      "Budget documents and tax slab announcements used for current tax regime comparison.",
   },
   {
     id: "ppac-fuel",
@@ -134,12 +140,18 @@ export const sources: SourceReference[] = [
     title: "RBI Reference Rate Archive",
     organization: "Reserve Bank of India",
     url: "https://www.rbi.org.in/scripts/referenceratearchive.aspx",
-    description: "USD-INR exchange rate benchmarks and reference-rate archives.",
+    description:
+      "USD-INR exchange rate benchmarks and reference-rate archives.",
   },
 ];
 
 export function getSourcesByCategory(category: string) {
-  return sources.filter((source) => source.category === category);
+  return sources
+    .filter((source) => source.category === category)
+    .map((source) => ({
+      ...source,
+      periodBadges: source.periodBadges ?? comparisonPeriodBadges,
+    }));
 }
 
 export function getSourceCategories() {

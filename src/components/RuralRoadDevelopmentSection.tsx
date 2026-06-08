@@ -190,7 +190,14 @@ function VerificationEvidence({
                 <div>
                   <dt className="text-slate-500">Source endpoint</dt>
                   <dd className="mt-1 break-all font-medium text-slate-950">
-                    {snapshot.endpoint}
+                    <a
+                      href={snapshot.endpoint}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-teal-700 underline underline-offset-2 hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                    >
+                      {snapshot.endpoint}
+                    </a>
                   </dd>
                 </div>
                 <div>

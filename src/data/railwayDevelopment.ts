@@ -1,3 +1,12 @@
+export type RailwaySourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  screenshotPath: string;
+  sourceType: "PIB" | "CORE";
+  note: string;
+};
+
 export const railwayDevelopment = {
   title: "Railway Development Comparison",
   source:
@@ -105,4 +114,37 @@ export const railwayDevelopment = {
       },
     ],
   },
+
+  verificationEvidence: [
+    {
+      label: "Railway development source before 2014",
+      period: "2004-2014",
+      sourceUrl:
+        "https://www.pib.gov.in/newsite/erelcontent.aspx?relid=102208&reg=3&lang=2",
+      screenshotPath:
+        "/source-snapshot/railways/source-image/railway-2013-pib.png",
+      sourceType: "PIB",
+      note: "Public PIB source used for pre-2014 railway development indicators.",
+    },
+    {
+      label: "Railway development source after 2014",
+      period: "2014-2025",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209199&reg=3&lang=2",
+      screenshotPath:
+        "/source-snapshot/railways/source-image/railway-2025-pib.png",
+      sourceType: "PIB",
+      note: "Public PIB source used for post-2014 railway development indicators.",
+    },
+    {
+      label: "Railway electrification source",
+      period: "CORE electrification records",
+      sourceUrl:
+        "https://core.indianrailways.gov.in/view_section.jsp?lang=0&id=0,294,302,536",
+      screenshotPath:
+        "/source-snapshot/railways/source-image/coreindianrailways.png",
+      sourceType: "CORE",
+      note: "Public CORE source used for railway electrification records.",
+    },
+  ] satisfies RailwaySourceEvidence[],
 };

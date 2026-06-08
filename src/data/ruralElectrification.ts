@@ -1,3 +1,13 @@
+export type RuralElectrificationSourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  screenshotPath: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const ruralElectrification = {
   title: "Rural Electrification: Village & Household Electricity Access",
   source: "PIB, Ministry of Power, Rural Electrification Schemes, 15 Dec 2022",
@@ -9,7 +19,8 @@ export const ruralElectrification = {
       name: "Deen Dayal Upadhyaya Gram Jyoti Yojana",
       shortName: "DDUGJY",
       launched: "December 2014",
-      focus: "Village electrification and rural power distribution strengthening",
+      focus:
+        "Village electrification and rural power distribution strengthening",
       objectives: [
         "Electrification of all un-electrified villages as per Census 2011",
         "Strengthening rural sub-transmission and distribution infrastructure",
@@ -49,7 +60,8 @@ export const ruralElectrification = {
       displayValue: "18,734",
     },
     {
-      label: "Previously unwilling households later sanctioned for electrification",
+      label:
+        "Previously unwilling households later sanctioned for electrification",
       value: 1909000,
       displayValue: "19.09 lakh",
     },
@@ -100,4 +112,20 @@ export const ruralElectrification = {
     after2014:
       "DDUGJY and Saubhagya focused on village electrification, rural distribution strengthening and universal household electricity connections. A total of 2.86 crore households were electrified as per PIB data.",
   },
+
+  verificationEvidence: [
+    {
+      label:
+        "Rural electrification schemes and household electrification source",
+      period: "2014-2022",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1883918&reg=3&lang=2",
+      screenshotPath:
+        "/source-snapshot/rural-electrification/source-image/rural-electrification-pib-2022.png",
+      pdfPath:
+        "/source-snapshot/rural-electrification/source-pdf/rural-electrification-pib.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for DDUGJY, Saubhagya and household electrification outcome indicators.",
+    },
+  ] satisfies RuralElectrificationSourceEvidence[],
 };
