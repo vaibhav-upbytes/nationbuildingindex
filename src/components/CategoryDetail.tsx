@@ -182,6 +182,18 @@ export function CategoryDetail({
                   <p className="mt-3 text-sm leading-6 text-slate-700">
                     {source.description}
                   </p>
+                  {source.periodBadges && source.periodBadges.length > 0 ? (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {source.periodBadges.map((period) => (
+                        <span
+                          key={`${source.id}-${period}`}
+                          className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-800"
+                        >
+                          {period}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                   <a
                     href={source.url}
                     target="_blank"

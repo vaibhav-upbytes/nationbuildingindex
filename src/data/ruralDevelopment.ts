@@ -8,6 +8,19 @@ export type SchemeBridgeCount = {
   count: number;
 };
 
+export type RuralRoadSourceSnapshot = {
+  period: string;
+  endpoint: string;
+  fromDate: string;
+  toDate: string;
+  schemeIds: string;
+  dateCaptured: string;
+  capturedFrom: string;
+  htmlSnapshotPath: string;
+  imageSnapshotPath: string;
+  extractionNote: string;
+};
+
 export type RuralRoadDevelopmentPeriod = {
   period: string;
   government: string;
@@ -15,6 +28,7 @@ export type RuralRoadDevelopmentPeriod = {
   totalBridges: number;
   roadsByScheme: SchemeRoadLength[];
   bridgesByScheme: SchemeBridgeCount[];
+  sourceSnapshot: RuralRoadSourceSnapshot;
 };
 
 export const ruralRoadDevelopment = {
@@ -34,6 +48,21 @@ export const ruralRoadDevelopment = {
         { scheme: "PMGSY-I", count: 484 },
         { scheme: "PMGSY-II", count: 0 },
       ],
+      sourceSnapshot: {
+        period: "2004-2014",
+        endpoint: "https://pmgsy.dord.gov.in/dbweb/Home/PMGSYHalfView",
+        fromDate: "2004-05-01",
+        toDate: "2014-06-01",
+        schemeIds: "1,2,3,4,5,6,7",
+        dateCaptured: "2026-06-08",
+        capturedFrom: "PMGSY/OMMAS",
+        htmlSnapshotPath:
+          "/source-snapshot/rural-development/source-html/pmgsy-2004-2014.html",
+        imageSnapshotPath:
+          "/source-snapshot/rural-development/source-image/pmgsy-2004-2014.png",
+        extractionNote:
+          "Values were extracted from the linked official HTML snapshot.",
+      },
     },
     {
       period: "2014–2026",
@@ -58,6 +87,21 @@ export const ruralRoadDevelopment = {
         { scheme: "PM-JANMAN", count: 0 },
         { scheme: "PMGSY-IV", count: 0 },
       ],
+      sourceSnapshot: {
+        period: "2014-2026",
+        endpoint: "https://pmgsy.dord.gov.in/dbweb/Home/PMGSYHalfView",
+        fromDate: "2014-06-01",
+        toDate: "2026-06-01",
+        schemeIds: "1,2,3,4,5,6,7",
+        dateCaptured: "2026-06-08",
+        capturedFrom: "PMGSY/OMMAS",
+        htmlSnapshotPath:
+          "/source-snapshot/rural-development/source-html/pmgsy-2014-2026.html",
+        imageSnapshotPath:
+          "/source-snapshot/rural-development/source-image/pmgsy-2014-2026.png",
+        extractionNote:
+          "Values were extracted from the linked official HTML snapshot.",
+      },
     },
   ],
 };
