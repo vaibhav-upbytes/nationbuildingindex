@@ -6,6 +6,15 @@ export type EducationComparisonMetric = {
   latestValue: number;
 };
 
+export type EducationSourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const educationDevelopment = {
   title: "Education Development",
   source:
@@ -126,4 +135,16 @@ export const educationDevelopment = {
       { year: "2024", rank: 39 },
     ],
   },
+  verificationEvidence: [
+    {
+      label: "Education development source",
+      period: "2014-2025",
+      sourceUrl:
+        "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154714&ModuleId=3&reg=3&lang=2",
+      pdfPath:
+        "/source-snapshot/education-development/source-pdf/education-pib-2026.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for higher education institutions, universities, colleges, IITs, IIMs, AIIMS, EMRS schools, PM SHRI schools, HEFA and education ranking indicators.",
+    },
+  ] satisfies EducationSourceEvidence[],
 };

@@ -2,6 +2,7 @@ import {
   highwayExpresswayDevelopment,
   type CompletionProgramme,
   type HighwayGrowthMetric,
+  type HighwaySourceEvidence,
 } from "@/data/highwayExpresswayDevelopment";
 
 const numberFormatter = new Intl.NumberFormat("en-IN", {
@@ -37,11 +38,13 @@ function ComparisonBarChart({ metric }: { metric: HighwayGrowthMetric }) {
     <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 className="text-lg font-semibold text-slate-950">{metric.title}</h3>
       <p className="mt-1 text-sm text-slate-600">
-        Increase: {formatNumber(metric.increaseKm)} km ({formatNumber(metric.growthPercent)}%)
+        Increase: {formatNumber(metric.increaseKm)} km (
+        {formatNumber(metric.growthPercent)}%)
       </p>
       <div className="mt-5 space-y-4">
         {metric.data.map((row, index) => {
-          const width = maxValue > 0 ? `${(row.valueKm / maxValue) * 100}%` : "0%";
+          const width =
+            maxValue > 0 ? `${(row.valueKm / maxValue) * 100}%` : "0%";
           const color = index > 0 ? "bg-[#ff9933]" : "bg-teal-700";
 
           return (
@@ -76,7 +79,9 @@ function ConstructionLineChart() {
       const x = rows.length > 1 ? (index / (rows.length - 1)) * 100 : 0;
       const y =
         maxValue > minValue
-          ? 100 - ((row.constructedKm - minValue) / (maxValue - minValue)) * 82 - 9
+          ? 100 -
+            ((row.constructedKm - minValue) / (maxValue - minValue)) * 82 -
+            9
           : 50;
 
       return `${x},${y}`;
@@ -120,7 +125,8 @@ function ConstructionLineChart() {
               const y =
                 maxValue > minValue
                   ? 100 -
-                    ((row.constructedKm - minValue) / (maxValue - minValue)) * 82 -
+                    ((row.constructedKm - minValue) / (maxValue - minValue)) *
+                      82 -
                     9
                   : 50;
 
@@ -156,7 +162,9 @@ function ConstructionLineChart() {
           <tbody>
             {rows.map((row) => (
               <tr key={row.year} className="border-b border-slate-100">
-                <td className="py-3 pr-4 font-medium text-slate-800">{row.year}</td>
+                <td className="py-3 pr-4 font-medium text-slate-800">
+                  {row.year}
+                </td>
                 <td className="py-3 pr-4 text-slate-700">
                   {formatNumber(row.constructedKm)} km
                 </td>
@@ -205,6 +213,96 @@ function ProgressChart({
         </div>
       </div>
     </article>
+  );
+}
+
+function VerificationEvidence({
+  evidence,
+}: {
+  evidence: HighwaySourceEvidence[];
+}) {
+  return (
+    <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-teal-700">
+          Verification evidence
+        </p>
+        <h3 className="mt-2 text-xl font-bold text-slate-950">
+          Public highway source reference
+        </h3>
+        <p className="mt-3 text-sm leading-6 text-slate-700">
+          Highway and expressway indicators are linked directly to the public
+          PIB page. The locally stored PDF is provided as a secondary evidence
+          copy for the same public source.
+        </p>
+      </div>
+
+      <div className="mt-5 grid gap-4">
+        {evidence.map((item) => (
+          <article
+            key={`${item.sourceType}-${item.period}`}
+            className="rounded-lg border border-slate-200 bg-slate-50 p-5"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {item.sourceType} source
+                </p>
+                <h4 className="mt-2 text-base font-semibold text-slate-950">
+                  {item.label}
+                </h4>
+              </div>
+              <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+                Public source
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm font-semibold text-teal-700">
+              {item.period}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-700">{item.note}</p>
+
+            <dl className="mt-4 space-y-3 text-sm">
+              <div>
+                <dt className="text-slate-500">Source URL</dt>
+                <dd className="mt-1 break-all font-medium text-slate-950">
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-teal-700 underline underline-offset-2 hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                  >
+                    {item.sourceUrl}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <a
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold !text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              >
+                Open public source
+              </a>
+              {item.pdfPath ? (
+                <a
+                  href={item.pdfPath}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                >
+                  View PDF
+                </a>
+              ) : null}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -309,7 +407,10 @@ export function HighwayExpresswayDevelopmentSection() {
               </thead>
               <tbody>
                 {data.bharatmala.components.map((component) => (
-                  <tr key={component.component} className="border-b border-slate-100">
+                  <tr
+                    key={component.component}
+                    className="border-b border-slate-100"
+                  >
                     <td className="py-3 pr-4 font-medium text-slate-800">
                       {component.component}
                     </td>
@@ -359,16 +460,24 @@ export function HighwayExpresswayDevelopmentSection() {
                 <h4 className="mt-2 text-base font-semibold text-slate-950">
                   {item.title}
                 </h4>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  {item.text}
+                </p>
               </article>
             ))}
           </div>
         </section>
 
+        <div className="mt-8">
+          <VerificationEvidence evidence={data.verificationEvidence} />
+        </div>
+
         <p className="mt-6 text-sm font-medium text-slate-600">
           Source:{" "}
           <a
             href={data.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
             className="text-teal-700 underline underline-offset-4 hover:text-teal-900"
           >
             {data.source}

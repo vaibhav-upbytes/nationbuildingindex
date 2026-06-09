@@ -1,3 +1,12 @@
+export type InflationSourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const inflationStability = {
   title: "Inflation & Price Stability",
   source:
@@ -51,4 +60,15 @@ export const inflationStability = {
     "LPG support under PM Ujjwala Yojana",
     "Free food grain support under PM Garib Kalyan Anna Yojana",
   ],
+  verificationEvidence: [
+    {
+      label: "Retail inflation and price stability source",
+      period: "2004-2025",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2122148&reg=3&lang=2",
+      pdfPath: "/source-snapshot/inflation/source-pdf/inflation-pib-2026.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for average CPI inflation, recent retail inflation trend, March 2025 CPI and food inflation, and policy measure references.",
+    },
+  ] satisfies InflationSourceEvidence[],
 };

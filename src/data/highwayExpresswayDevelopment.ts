@@ -24,6 +24,15 @@ export type CompletionProgramme = {
   completionPercent: number;
 };
 
+export type HighwaySourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const highwayExpresswayDevelopment = {
   title: "Highway & Expressway Development",
   source: "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
@@ -161,4 +170,16 @@ export const highwayExpresswayDevelopment = {
       text: "SARDP-NE reached 97.7% completion and LWE road programme reached 96.9%.",
     },
   ],
+  verificationEvidence: [
+    {
+      label: "Highway and expressway development source",
+      period: "2014-2025",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2209837&reg=3&lang=2",
+      pdfPath:
+        "/source-snapshot/highway-expressway/source-pdf/road-highway-pib-2026.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for National Highway network expansion, expressway growth, construction pace, Bharatmala, SARDP-NE, LWE road programme and logistics infrastructure indicators.",
+    },
+  ] satisfies HighwaySourceEvidence[],
 };

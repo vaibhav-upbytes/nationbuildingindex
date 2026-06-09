@@ -1,3 +1,4 @@
+import type { EconomicGrowthSourceEvidence } from "@/data/economicGrowth";
 import { economicGrowth } from "@/data/economicGrowth";
 
 const numberFormatter = new Intl.NumberFormat("en-IN", {
@@ -31,7 +32,12 @@ function BarChart({
   rows,
 }: {
   title: string;
-  rows: { label: string; value: number; display: string; after2014?: boolean }[];
+  rows: {
+    label: string;
+    value: number;
+    display: string;
+    after2014?: boolean;
+  }[];
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value));
 
@@ -40,7 +46,8 @@ function BarChart({
       <h3 className="text-lg font-semibold text-slate-950">{title}</h3>
       <div className="mt-5 space-y-4">
         {rows.map((row) => {
-          const width = maxValue > 0 ? `${(row.value / maxValue) * 100}%` : "0%";
+          const width =
+            maxValue > 0 ? `${(row.value / maxValue) * 100}%` : "0%";
           const color = row.after2014 ? "bg-[#ff9933]" : "bg-teal-700";
 
           return (
@@ -128,7 +135,10 @@ function SectorStackedChart() {
                   style={{ width: `${row.tertiary}%` }}
                 />
                 {remainder > 0 ? (
-                  <div className="bg-slate-300" style={{ width: `${remainder}%` }} />
+                  <div
+                    className="bg-slate-300"
+                    style={{ width: `${remainder}%` }}
+                  />
                 ) : null}
               </div>
             </div>
@@ -148,6 +158,96 @@ function SectorStackedChart() {
           <span className="size-3 rounded-full bg-[#ff9933]" />
           Tertiary / services
         </span>
+      </div>
+    </section>
+  );
+}
+
+function VerificationEvidence({
+  evidence,
+}: {
+  evidence: EconomicGrowthSourceEvidence[];
+}) {
+  return (
+    <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-teal-700">
+          Verification evidence
+        </p>
+        <h3 className="mt-2 text-xl font-bold text-slate-950">
+          Public economic-growth source reference
+        </h3>
+        <p className="mt-3 text-sm leading-6 text-slate-700">
+          Economic growth indicators are linked directly to the public PIB page.
+          The locally stored PDF is provided as a secondary evidence copy for
+          the same public source.
+        </p>
+      </div>
+
+      <div className="mt-5 grid gap-4">
+        {evidence.map((item) => (
+          <article
+            key={`${item.sourceType}-${item.period}`}
+            className="rounded-lg border border-slate-200 bg-slate-50 p-5"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {item.sourceType} source
+                </p>
+                <h4 className="mt-2 text-base font-semibold text-slate-950">
+                  {item.label}
+                </h4>
+              </div>
+              <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+                Public source
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm font-semibold text-teal-700">
+              {item.period}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-700">{item.note}</p>
+
+            <dl className="mt-4 space-y-3 text-sm">
+              <div>
+                <dt className="text-slate-500">Source URL</dt>
+                <dd className="mt-1 break-all font-medium text-slate-950">
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-teal-700 underline underline-offset-2 hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                  >
+                    {item.sourceUrl}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <a
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold !text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              >
+                Open public source
+              </a>
+              {item.pdfPath ? (
+                <a
+                  href={item.pdfPath}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                >
+                  View PDF
+                </a>
+              ) : null}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -277,10 +377,7 @@ export function EconomicGrowthSection() {
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           <BarChart title="GDP Comparison" rows={gdpRows} />
           <BarChart title="Total Export Growth" rows={totalExportRows} />
-          <BarChart
-            title="Services Export Growth"
-            rows={servicesExportRows}
-          />
+          <BarChart title="Services Export Growth" rows={servicesExportRows} />
           <SectorStackedChart />
           <GlobalRankTimeline />
         </div>
@@ -333,7 +430,10 @@ export function EconomicGrowthSection() {
             </h3>
             <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
               {economicGrowth.highlights.map((highlight) => (
-                <li key={highlight} className="rounded-md bg-slate-50 px-3 py-2">
+                <li
+                  key={highlight}
+                  className="rounded-md bg-slate-50 px-3 py-2"
+                >
                   {highlight}
                 </li>
               ))}
@@ -353,10 +453,18 @@ export function EconomicGrowthSection() {
           </article>
         </section>
 
+        <div className="mt-8">
+          <VerificationEvidence
+            evidence={economicGrowth.verificationEvidence}
+          />
+        </div>
+
         <p className="mt-6 text-sm font-medium text-slate-600">
           Source:{" "}
           <a
             href={economicGrowth.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
             className="text-teal-700 underline underline-offset-4 hover:text-teal-900"
           >
             {economicGrowth.source}
@@ -364,6 +472,8 @@ export function EconomicGrowthSection() {
           {"; reference: "}
           <a
             href={economicGrowth.referenceUrl}
+            target="_blank"
+            rel="noreferrer"
             className="text-teal-700 underline underline-offset-4 hover:text-teal-900"
           >
             {economicGrowth.referenceSource}

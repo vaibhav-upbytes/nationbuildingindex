@@ -1,3 +1,12 @@
+export type EconomicGrowthSourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const economicGrowth = {
   title: "Economic Growth & Structural Transformation",
   source: "PIB – India Becoming an Economic Powerhouse (June 2025)",
@@ -41,7 +50,8 @@ export const economicGrowth = {
     title: "India's Global Economic Position",
     rank2014: 10,
     rank2025: 4,
-    projection: "India is projected to become the 3rd largest economy in coming years.",
+    projection:
+      "India is projected to become the 3rd largest economy in coming years.",
   },
   exports: {
     totalExports: {
@@ -63,7 +73,8 @@ export const economicGrowth = {
       description: "Agriculture, forestry, fishing, and mining",
       fy14Percent: 18,
       fy25Percent: 17.5,
-      observation: "Primary sector remained stable while absolute output increased.",
+      observation:
+        "Primary sector remained stable while absolute output increased.",
     },
     secondary: {
       title: "Secondary Sector",
@@ -97,4 +108,16 @@ export const economicGrowth = {
     "India moved from the 10th largest economy to the 4th largest economy.",
     "Services exports became a major contributor to growth.",
   ],
+  verificationEvidence: [
+    {
+      label: "Economic growth and structural transformation source",
+      period: "2014-2025",
+      sourceUrl:
+        "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154660&ModuleId=3&reg=48&lang=2",
+      pdfPath:
+        "/source-snapshot/economic-growth/source-pdf/economic-growth-pib-2026.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for GDP expansion, exports, services sector contribution, global economic position and structural transformation indicators.",
+    },
+  ] satisfies EconomicGrowthSourceEvidence[],
 };

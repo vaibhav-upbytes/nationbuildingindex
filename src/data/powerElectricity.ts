@@ -1,3 +1,12 @@
+export type PowerElectricitySourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  pdfPath?: string;
+  sourceType: "PIB";
+  note: string;
+};
+
 export const powerElectricity = {
   title: "Power & Electricity",
   source:
@@ -115,4 +124,25 @@ export const powerElectricity = {
       asOf: "January 2026",
     },
   },
+
+  verificationEvidence: [
+    {
+      label: "Power sector progress, reform and capacity source",
+      period: "FY 2013-14 to FY 2025-26",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2241822&reg=3&lang=2",
+      pdfPath:
+        "/source-snapshot/power-electricity/source-pdf/power-sector-26.pdf",
+      sourceType: "PIB",
+      note: "Public PIB source used for power shortage, capacity, renewable energy, daily supply, DISCOM and smart meter indicators.",
+    },
+    {
+      label: "Rural electrification and household access source",
+      period: "2014-2022",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1883918&reg=3&lang=2",
+      sourceType: "PIB",
+      note: "Public PIB source used for DDUGJY, Saubhagya and household electrification access indicators included in this category.",
+    },
+  ] satisfies PowerElectricitySourceEvidence[],
 };
