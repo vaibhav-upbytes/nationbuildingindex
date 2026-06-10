@@ -5,11 +5,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nation Building Index – Compare Development Outcomes Through Data",
+    default:
+      "Nation Building Index – Compare Development Outcomes Through Data",
     template: "%s | Nation Building Index",
   },
   description:
     "Nation Building Index helps citizens compare governance outcomes across infrastructure, economy, education, energy, taxation, inflation and public services using official data sources and long-term development trends.",
+  icons: {
+    icon: "/images/favicon.ico",
+    shortcut: "/images/favicon.ico",
+  },
   keywords: [
     "Nation Building Index",
     "nationbuildingindex.com",

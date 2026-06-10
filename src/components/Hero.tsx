@@ -83,7 +83,9 @@ export function Hero() {
                 WebkitTextFillColor: "#0f172a",
               }}
             >
-              <span style={{ color: "#0f172a", WebkitTextFillColor: "#0f172a" }}>
+              <span
+                style={{ color: "#0f172a", WebkitTextFillColor: "#0f172a" }}
+              >
                 Explore the Index
               </span>
             </Link>
@@ -117,8 +119,12 @@ export function Hero() {
                 Public Data Index
               </h2>
             </div>
-            <span className="rounded-md bg-white px-2.5 py-1 text-sm font-bold text-slate-950">
-              NBI
+            <span className="flex size-10 items-center justify-center overflow-hidden rounded-md border border-slate-200 bg-white">
+              <img
+                src="/images/nbi_logo.png"
+                alt="Nation Building Index logo"
+                className="size-full object-contain"
+              />
             </span>
           </div>
 

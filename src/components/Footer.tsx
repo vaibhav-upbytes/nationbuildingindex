@@ -17,6 +17,18 @@ export function Footer() {
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 text-sm text-slate-600 md:grid-cols-[1fr_1.2fr]">
         <div>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex size-10 items-center justify-center overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm">
+              <img
+                src="/images/nbi_logo.png"
+                alt="Nation Building Index logo"
+                className="size-full object-contain"
+              />
+            </span>
+            <span className="text-base font-semibold text-slate-950">
+              Nation Building Index
+            </span>
+          </div>
           <p>
             Nation Building Index is a static, data-focused public comparison
             project. Values should remain tied to official sources and

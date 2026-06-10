@@ -15,8 +15,12 @@ export function Navbar() {
           href="/#category-dashboard"
           className="flex items-center gap-3 text-lg font-semibold text-slate-950"
         >
-          <span className="flex size-9 items-center justify-center rounded-md bg-slate-950 text-sm font-bold text-white">
-            NBI
+          <span className="flex size-10 items-center justify-center overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm">
+            <img
+              src="/images/nbi_logo.png"
+              alt="Nation Building Index logo"
+              className="size-full object-contain"
+            />
           </span>
           <span>Nation Building Index</span>
         </Link>
