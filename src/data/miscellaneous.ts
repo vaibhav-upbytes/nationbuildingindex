@@ -1,14 +1,21 @@
+export type MiscellaneousSourceEvidence = {
+  label: string;
+  period: string;
+  sourceUrl: string;
+  imagePath: string;
+  sourceType: "PPAC" | "RBI" | "IOCL";
+  note: string;
+};
+
 export const miscellaneous = {
   title: "Miscellaneous: Fuel Prices & Currency Movement",
-  note:
-    "Fuel prices are shown for Delhi as a benchmark city. Petrol, diesel and LPG prices vary by state, city, taxes and subsidy rules. LPG comparison uses non-subsidised 14.2 kg domestic cylinder price where available.",
+  note: "Fuel prices are shown for Delhi as a benchmark city. Petrol, diesel and LPG prices vary by state, city, taxes and subsidy rules. LPG comparison uses non-subsidised 14.2 kg domestic cylinder price where available.",
   context:
     "Fuel and LPG prices are affected by global crude prices, taxes, subsidies, exchange rate movements and state VAT. This section shows benchmark price movement, not a complete affordability analysis.",
   lpgDisclaimer:
     "LPG comparison is indicative because subsidy rules and direct benefit transfer changed over time.",
   seo: {
-    title:
-      "Fuel Prices and Currency Movement in India: 2004–2014 vs 2014–2025",
+    title: "Fuel Prices and Currency Movement in India: 2004–2014 vs 2014–2025",
     description:
       "Compare petrol, diesel, LPG cylinder prices and USD-INR exchange rate movement across 2004–2014 and 2014–2025 using benchmark Delhi fuel prices and RBI exchange rate references.",
     keywords: [
@@ -138,7 +145,36 @@ export const miscellaneous = {
         depreciation: 24.58,
       },
     ],
-    note:
-      "Currency rates fluctuate daily. This comparison uses endpoint benchmark values from RBI/reference exchange-rate records.",
+    note: "Currency rates fluctuate daily. This comparison uses endpoint benchmark values from RBI/reference exchange-rate records.",
   },
+  verificationEvidence: [
+    {
+      label: "Petrol and diesel retail price source",
+      period: "2003-2017",
+      sourceUrl:
+        "https://ppac.gov.in/retail-selling-price-rsp-of-petrol-diesel-and-domestic-lpg/rsp-of-petrol-and-diesel-at-delhi-up-to-15-6-2017",
+      imagePath:
+        "/source-snapshot/miscellaneous/source-image/fuel-pricing-2003-2017.png",
+      sourceType: "PPAC",
+      note: "Public PPAC source used for Delhi petrol and diesel benchmark retail selling price references.",
+    },
+    {
+      label: "USD-INR reference rate source",
+      period: "2004-2024",
+      sourceUrl: "https://www.rbi.org.in/scripts/referenceratearchive.aspx",
+      imagePath:
+        "/source-snapshot/miscellaneous/source-image/rbi-dollar-rate-2004-2024.png",
+      sourceType: "RBI",
+      note: "Public RBI source used for USD-INR reference rate archive and endpoint currency movement.",
+    },
+    {
+      label: "Non-subsidised domestic LPG source",
+      period: "2014-2024",
+      sourceUrl: "https://iocl.com/indane-14Kg-nonsubsid-previous-price",
+      imagePath:
+        "/source-snapshot/miscellaneous/source-image/iocl.com_indane-14Kg-nonsubsid-2014-2024.png",
+      sourceType: "IOCL",
+      note: "Public IndianOil source used for non-subsidised 14.2 kg domestic LPG price references.",
+    },
+  ] satisfies MiscellaneousSourceEvidence[],
 };

@@ -1,3 +1,4 @@
+import type { MiscellaneousSourceEvidence } from "@/data/miscellaneous";
 import { miscellaneous } from "@/data/miscellaneous";
 
 const numberFormatter = new Intl.NumberFormat("en-IN", {
@@ -32,6 +33,94 @@ function SummaryCard({
       <p className="mt-2 text-2xl font-bold text-slate-950">{value}</p>
       <p className="mt-2 text-xs leading-5 text-slate-500">{note}</p>
     </article>
+  );
+}
+
+function VerificationEvidence({
+  evidence,
+}: {
+  evidence: MiscellaneousSourceEvidence[];
+}) {
+  return (
+    <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase text-teal-700">
+          Verification evidence
+        </p>
+        <h3 className="mt-2 text-xl font-bold text-slate-950">
+          Public fuel and currency source references
+        </h3>
+        <p className="mt-3 text-sm leading-6 text-slate-700">
+          Fuel, LPG and currency indicators are linked directly to public PPAC,
+          IndianOil and RBI pages. Screenshots are provided as secondary visual
+          evidence for the same public sources.
+        </p>
+      </div>
+
+      <div className="mt-5 grid gap-4 lg:grid-cols-3">
+        {evidence.map((item) => (
+          <article
+            key={`${item.sourceType}-${item.period}`}
+            className="rounded-lg border border-slate-200 bg-slate-50 p-5"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {item.sourceType} source
+                </p>
+                <h4 className="mt-2 text-base font-semibold text-slate-950">
+                  {item.label}
+                </h4>
+              </div>
+              <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+                Public source
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm font-semibold text-teal-700">
+              {item.period}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-700">{item.note}</p>
+
+            <dl className="mt-4 space-y-3 text-sm">
+              <div>
+                <dt className="text-slate-500">Source URL</dt>
+                <dd className="mt-1 break-all font-medium text-slate-950">
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-teal-700 underline underline-offset-2 hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                  >
+                    {item.sourceUrl}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <a
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold !text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              >
+                Open public source
+              </a>
+              <a
+                href={item.imagePath}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"
+              >
+                View screenshot
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -122,7 +211,10 @@ export function MiscellaneousSection() {
           />
           <SummaryCard
             label="USD-INR movement"
-            value={formatChange(currencyPost2014.depreciation, data.currency.unit)}
+            value={formatChange(
+              currencyPost2014.depreciation,
+              data.currency.unit,
+            )}
             note="2014–2025 endpoint movement"
           />
         </div>
@@ -166,9 +258,15 @@ export function MiscellaneousSection() {
                     <td className="px-4 py-3 font-semibold text-slate-950">
                       {row.metric}
                     </td>
-                    <td className="px-4 py-3 text-slate-700">{row.value2004}</td>
-                    <td className="px-4 py-3 text-slate-700">{row.value2014}</td>
-                    <td className="px-4 py-3 text-slate-700">{row.value2025}</td>
+                    <td className="px-4 py-3 text-slate-700">
+                      {row.value2004}
+                    </td>
+                    <td className="px-4 py-3 text-slate-700">
+                      {row.value2014}
+                    </td>
+                    <td className="px-4 py-3 text-slate-700">
+                      {row.value2025}
+                    </td>
                     <td className="px-4 py-3 text-slate-700">
                       {row.changePre2014}
                     </td>
@@ -186,6 +284,10 @@ export function MiscellaneousSection() {
           </div>
         </section>
 
+        <div className="mt-8">
+          <VerificationEvidence evidence={data.verificationEvidence} />
+        </div>
+
         <div className="mt-6 text-sm font-medium text-slate-600">
           <p>Sources</p>
           <ul className="mt-2 flex flex-wrap gap-2">
@@ -193,6 +295,8 @@ export function MiscellaneousSection() {
               <li key={source.label}>
                 <a
                   href={source.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-slate-700 underline-offset-4 hover:text-slate-950 hover:underline"
                 >
                   {source.label}
