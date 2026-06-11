@@ -185,6 +185,32 @@ export const categories: CategorySummary[] = [
     sourceLabels: ["PIB", "Ministry of Finance"],
   },
   {
+    id: "poverty-reduction",
+    title: "Poverty Reduction & Living Standards",
+    shortTitle: "Poverty Reduction",
+    description:
+      "Poverty reduction, people lifted out of poverty, living standards and inequality trends.",
+    icon: "PR",
+    metricCount: 8,
+    period: "2004–2024/25",
+    headlineMetric: {
+      label: "Extreme poverty",
+      before: "16.2%",
+      after: "2.3%",
+    },
+    keywords: [
+      "poverty",
+      "poor",
+      "inclusive growth",
+      "living standards",
+      "rural poverty",
+      "urban poverty",
+      "inequality",
+      "gini",
+    ],
+    sourceLabels: ["PIB", "World Bank"],
+  },
+  {
     id: "direct-income-tax",
     title: "Direct Income Tax",
     shortTitle: "Income Tax",

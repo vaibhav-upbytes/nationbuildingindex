@@ -9,6 +9,7 @@ import { InflationStabilitySection } from "@/components/InflationStabilitySectio
 import { KpiCard } from "@/components/KpiCard";
 import { MetricChart } from "@/components/MetricChart";
 import { MiscellaneousSection } from "@/components/MiscellaneousSection";
+import { PovertyReductionSection } from "@/components/PovertyReductionSection";
 import { PowerElectricitySection } from "@/components/PowerElectricitySection";
 import { RailwayDevelopmentSection } from "@/components/RailwayDevelopmentSection";
 import { RuralElectrificationSection } from "@/components/RuralElectrificationSection";
@@ -35,6 +36,7 @@ const detailComponents: Record<string, ComponentType> = {
   "education-development": EducationDevelopmentSection,
   "economic-growth": EconomicGrowthSection,
   inflation: InflationStabilitySection,
+  "poverty-reduction": PovertyReductionSection,
   "direct-income-tax": DirectIncomeTaxSection,
   miscellaneous: MiscellaneousSection,
 };

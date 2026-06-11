@@ -152,7 +152,8 @@ export const comparisonData: ComparisonRow[] = [
     modiValue: "2.86",
     unit: "Crore households",
     status: "verified",
-    sourceNote: "PIB, Ministry of Power, Rural Electrification Schemes, 15 Dec 2022",
+    sourceNote:
+      "PIB, Ministry of Power, Rural Electrification Schemes, 15 Dec 2022",
   },
   {
     category: "Metro Rail Construction",
@@ -185,7 +186,8 @@ export const comparisonData: ComparisonRow[] = [
     modiValue: "1,46,560",
     unit: "KM",
     status: "verified",
-    sourceNote: "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
+    sourceNote:
+      "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
   },
   {
     category: "Highway & Expressway Development",
@@ -196,7 +198,8 @@ export const comparisonData: ComparisonRow[] = [
     modiValue: "3,052",
     unit: "KM",
     status: "verified",
-    sourceNote: "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
+    sourceNote:
+      "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
   },
   {
     category: "Highway & Expressway Development",
@@ -207,7 +210,8 @@ export const comparisonData: ComparisonRow[] = [
     modiValue: "43,512",
     unit: "KM",
     status: "verified",
-    sourceNote: "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
+    sourceNote:
+      "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
   },
   {
     category: "Highway & Expressway Development",
@@ -218,7 +222,8 @@ export const comparisonData: ComparisonRow[] = [
     modiValue: "21,597 completed",
     unit: "KM",
     status: "verified",
-    sourceNote: "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
+    sourceNote:
+      "PIB - Ministry of Road Transport & Highways - Year End Review 2025",
   },
   {
     category: "Education Development",
@@ -454,5 +459,50 @@ export const comparisonData: ComparisonRow[] = [
     unit: "₹ per USD",
     status: "verified",
     sourceNote: "RBI Reference Rate Archive",
+  },
+  {
+    category: "Poverty Reduction & Living Standards",
+    metric: "Extreme poverty",
+    manmohanPeriod: "2011-12",
+    modiPeriod: "2022-23",
+    manmohanValue: "16.2",
+    modiValue: "2.3",
+    unit: "%",
+    status: "verified",
+    sourceNote: "PIB 2025 World Bank Poverty & Equity Brief",
+  },
+  {
+    category: "Poverty Reduction & Living Standards",
+    metric: "People lifted from extreme poverty",
+    manmohanPeriod: "2004–2014 national poverty",
+    modiPeriod: "2014–2024 extreme poverty",
+    manmohanValue: "Approx. 137",
+    modiValue: "171",
+    unit: "Million people",
+    status: "verified",
+    sourceNote:
+      "PIB poverty estimates and PIB 2025 World Bank Poverty & Equity Brief",
+  },
+  {
+    category: "Poverty Reduction & Living Standards",
+    metric: "Lower-middle-income poverty",
+    manmohanPeriod: "2011-12",
+    modiPeriod: "2022-23",
+    manmohanValue: "61.8",
+    modiValue: "28.1",
+    unit: "%",
+    status: "verified",
+    sourceNote: "PIB 2025 World Bank Poverty & Equity Brief",
+  },
+  {
+    category: "Poverty Reduction & Living Standards",
+    metric: "Gini Index",
+    manmohanPeriod: "2011-12",
+    modiPeriod: "2022-23",
+    manmohanValue: "28.8",
+    modiValue: "25.5",
+    unit: "Index",
+    status: "verified",
+    sourceNote: "PIB 2025 World Bank Poverty & Equity Brief",
   },
 ];

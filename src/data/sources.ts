@@ -101,6 +101,33 @@ export const sources: SourceReference[] = [
     description: "Retail inflation, food inflation and CPI trend references.",
   },
   {
+    id: "poverty-2013-pib",
+    category: "Poverty Reduction & Living Standards",
+    title: "PIB 2013 Poverty Estimates",
+    organization: "PIB / Planning Commission",
+    url: "https://www.pib.gov.in/newsite/erelcontent.aspx?relid=97365&reg=48&lang=2",
+    description:
+      "Planning Commission / Tendulkar methodology poverty estimates for the earlier comparison period.",
+  },
+  {
+    id: "poverty-world-bank-2025-pib",
+    category: "Poverty Reduction & Living Standards",
+    title: "PIB 2025 World Bank Poverty & Equity Brief",
+    organization: "PIB / World Bank",
+    url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2124545&reg=48&lang=2",
+    description:
+      "World Bank poverty, rural/urban poverty, lower-middle-income poverty and inequality indicators.",
+  },
+  {
+    id: "poverty-story-2025-pib",
+    category: "Poverty Reduction & Living Standards",
+    title: "PIB 2025 India’s Poverty Story Transformed",
+    organization: "PIB",
+    url: "https://www.pib.gov.in/FactsheetDetails.aspx?Id=149221&reg=48&lang=2",
+    description:
+      "Factsheet references for poverty reduction and living standards context.",
+  },
+  {
     id: "income-tax-department",
     category: "Direct Income Tax",
     title: "Income Tax Department",

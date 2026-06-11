@@ -15,6 +15,7 @@ const rowCategoryMap: Record<string, string[]> = {
   "education-development": ["Education Development"],
   "economic-growth": ["Economic Growth & Structural Transformation"],
   inflation: ["Inflation & Price Stability"],
+  "poverty-reduction": ["Poverty Reduction & Living Standards"],
   "direct-income-tax": ["Direct Income Tax Comparison"],
   miscellaneous: ["Miscellaneous: Fuel Prices & Currency Movement"],
 };
@@ -102,7 +103,9 @@ export function DashboardExperience() {
   const selectedCategory = selectedId
     ? categories.find((category) => category.id === selectedId)
     : undefined;
-  const selectedRows = selectedCategory ? rowsForCategory(selectedCategory.id) : [];
+  const selectedRows = selectedCategory
+    ? rowsForCategory(selectedCategory.id)
+    : [];
   const totalMetrics = categories.reduce(
     (total, category) => total + category.metricCount,
     0,
