@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AnimatedNationalDashboard } from "@/components/AnimatedNationalDashboard";
 import { DashboardExperience } from "@/components/DashboardExperience";
 import { Hero } from "@/components/Hero";
 
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <AnimatedNationalDashboard />
       <DashboardExperience />
       <section className="bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-12 sm:flex-row sm:items-center sm:justify-between">
