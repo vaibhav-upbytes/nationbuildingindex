@@ -13,6 +13,7 @@ const rowCategoryMap: Record<string, string[]> = {
   "power-electricity": ["Power & Electricity"],
   "highway-expressway": ["Highway & Expressway Development"],
   "education-development": ["Education Development"],
+  "employment-workforce": ["Employment & Workforce Growth"],
   "economic-growth": ["Economic Growth & Structural Transformation"],
   inflation: ["Inflation & Price Stability"],
   "poverty-reduction": ["Poverty Reduction & Living Standards"],

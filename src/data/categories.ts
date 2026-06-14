@@ -152,6 +152,37 @@ export const categories: CategorySummary[] = [
     sourceLabels: ["PIB", "Ministry of Education"],
   },
   {
+    id: "employment-workforce",
+    title: "Employment & Workforce Growth",
+    shortTitle: "Employment & Workforce",
+    description:
+      "Employment growth, unemployment, LFPR, women workforce participation, formal payroll and wage indicators.",
+    icon: "EW",
+    metricCount: 8,
+    period: "2004–2024/25",
+    headlineMetric: {
+      label: "Employment",
+      before: "47.5 crore",
+      after: "64.33 crore",
+    },
+    keywords: [
+      "employment",
+      "jobs",
+      "unemployment",
+      "workforce",
+      "labour",
+      "worker",
+      "epfo",
+      "women",
+      "youth",
+      "lfpr",
+      "wpr",
+      "salary",
+      "wages",
+    ],
+    sourceLabels: ["PIB", "PLFS", "NSSO", "EPFO"],
+  },
+  {
     id: "economic-growth",
     title: "Economic Growth",
     description:

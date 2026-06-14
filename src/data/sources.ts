@@ -75,6 +75,33 @@ export const sources: SourceReference[] = [
       "Universities, colleges, IITs, IIMs, AIIMS, EMRS schools and educational expansion.",
   },
   {
+    id: "employment-pib-backgrounder-2025",
+    category: "Employment & Workforce Growth",
+    title: "PIB Employment Backgrounder 2025",
+    organization: "PIB / Ministry of Labour & Employment",
+    url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2174773&reg=3&lang=2",
+    description:
+      "Employment growth, unemployment, LFPR, WPR, women workforce participation, EPFO payroll and wage indicators.",
+  },
+  {
+    id: "employment-labour-ministry-nsso",
+    category: "Employment & Workforce Growth",
+    title: "Ministry of Labour & Employment / NSSO historical employment data",
+    organization: "Ministry of Labour & Employment",
+    url: "https://labour.gov.in/",
+    description:
+      "Historical NSSO employment-unemployment indicators for the earlier comparison period.",
+  },
+  {
+    id: "employment-plfs-mospi",
+    category: "Employment & Workforce Growth",
+    title: "PLFS / MoSPI Labour Force References",
+    organization: "MoSPI",
+    url: "https://mospi.gov.in/",
+    description:
+      "Periodic Labour Force Survey references for later-period labour-market indicators.",
+  },
+  {
     id: "economic-growth-pib",
     category: "Economic Growth",
     title: "Economic Growth Press Note",

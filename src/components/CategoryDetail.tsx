@@ -4,6 +4,7 @@ import { ContextBox } from "@/components/ContextBox";
 import { DirectIncomeTaxSection } from "@/components/DirectIncomeTaxSection";
 import { EconomicGrowthSection } from "@/components/EconomicGrowthSection";
 import { EducationDevelopmentSection } from "@/components/EducationDevelopmentSection";
+import { EmploymentWorkforceSection } from "@/components/EmploymentWorkforceSection";
 import { HighwayExpresswayDevelopmentSection } from "@/components/HighwayExpresswayDevelopmentSection";
 import { InflationStabilitySection } from "@/components/InflationStabilitySection";
 import { KpiCard } from "@/components/KpiCard";
@@ -34,6 +35,7 @@ const detailComponents: Record<string, ComponentType> = {
   "power-electricity": PowerElectricitySection,
   "highway-expressway": HighwayExpresswayDevelopmentSection,
   "education-development": EducationDevelopmentSection,
+  "employment-workforce": EmploymentWorkforceSection,
   "economic-growth": EconomicGrowthSection,
   inflation: InflationStabilitySection,
   "poverty-reduction": PovertyReductionSection,
