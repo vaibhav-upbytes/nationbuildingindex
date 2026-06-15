@@ -7,174 +7,218 @@ export type EmploymentSourceEvidence = {
   label: string;
   period: string;
   sourceUrl: string;
-  sourceType: "PIB" | "NSSO / Labour Ministry" | "PLFS / Administrative";
+  sourceType: "PIB" | "RBI KLEMS" | "SBI Ecowrap" | "EPFO" | "Rozgar Mela" | "New India Samachar" | "PLFS";
   note: string;
+};
+
+export type EmploymentComparisonRow = {
+  indicator: string;
+  earlierPeriod: string;
+  laterPeriod: string;
+  dataType: string;
+  source: string;
+  sourceUrl: string;
+  notes: string;
 };
 
 export const employmentWorkforce = {
   id: "employment-workforce",
-  title: "Employment & Workforce Growth",
-  period: "2004–2024/25",
+  title: "Employment and Workforce",
+  period: "2004–2024",
   seo: {
-    title: "Employment & Workforce Growth in India",
+    title: "Employment and Workforce in India",
     description:
-      "Compare employment growth, unemployment rate, labour force participation, women workforce participation, EPFO formal employment, wage growth and workforce trends in India using official data sources.",
+      "Compare total employment added, formal payroll growth, central government recruitment, and unemployment trends in India using RBI KLEMS, PIB, EPFO, PLFS, SBI Ecowrap and public source data.",
     keywords: [
-      "employment growth India",
+      "employment India",
       "workforce India",
-      "unemployment rate India",
-      "labour force participation India",
-      "women workforce India",
-      "EPFO payroll India",
-      "wage growth India",
-      "PLFS employment data",
-      "NSSO employment data",
+      "RBI KLEMS employment",
+      "EPFO net subscribers",
+      "PLFS unemployment",
+      "central government recruitment",
+      "formal payroll India",
+      "employment data limitation India",
     ],
   },
   sources: [
     {
-      label: "PIB Employment Backgrounder 2025",
+      label: "PIB Press Release on employment / RBI KLEMS",
+      url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2035280",
+    },
+    {
+      label: "PIB Employment Backgrounder / PLFS unemployment",
       url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2174773&reg=3&lang=2",
     },
     {
-      label: "Ministry of Labour & Employment / NSSO historical employment data",
-      url: "https://labour.gov.in/",
+      label: "SBI Ecowrap citing RBI KLEMS employment comparison",
+      url: "https://sbi.bank.in/documents/13958/43951007/100724-Ecowrap_20240710.pdf/b4d127c1-3d48-2704-36ef-a22accafcfb9?t=1720591608435",
     },
     {
-      label: "PLFS / MoSPI references",
-      url: "https://mospi.gov.in/",
+      label: "PIB / Rozgar Mela reference",
+      url: "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=1929384&lang=1&reg=3",
+    },
+    {
+      label: "New India Samachar central government recruitment comparison",
+      url: "https://newindiasamachar.pib.gov.in/WriteReadData/Magazine//2023/Aug/M202308161.pdf",
     },
   ] satisfies EmploymentSource[],
   methodologyNote:
-    "Employment data uses different survey systems across periods. Earlier figures are based on NSSO Employment-Unemployment Surveys, while later figures use PLFS and administrative datasets such as EPFO payroll records. These figures should be read as broad labour-market trends rather than perfectly identical measurement systems.",
-  historical2004_2014: {
-    unemployedPeopleMillion: [
-      { year: "2004-05", value: 11.3 },
-      { year: "2009-10", value: 9.8 },
-      { year: "2011-12", value: 10.8 },
-    ],
-    cdsUnemploymentRate: [
-      { year: "2004-05", value: 8.2 },
-      { year: "2011-12", value: 5.6 },
-    ],
-    jobsCreatedPsSsMillion: [
-      { period: "1999-2000 to 2004-05", value: 59.9 },
-      { period: "2004-05 to 2009-10", value: 1.1 },
-      { period: "2009-10 to 2011-12", value: 13.9 },
-    ],
-    labourForceParticipation: [
-      { year: "2004-05", value: 42.85 },
-      { year: "2011-12", value: 39.5 },
-    ],
-    workerPopulationRatio2011_12: {
-      allIndia: 39,
-      rural: 40,
-      urban: 36,
+    "Employment data comes from multiple sources and each source measures a different thing. RBI KLEMS estimates total employment across the economy. EPFO payroll tracks formal-sector subscribers. Central recruitment data tracks direct central government appointments. PLFS tracks labour force and unemployment indicators. These should be shown separately, not added together.",
+  privateSectorLimitation:
+    "India does not publish one clean official number for private-sector jobs created during 2004–2014 and 2014–2024. For private/formal employment, EPFO payroll is the best available proxy from September 2017 onward. For total employment, RBI KLEMS is the broadest available employment dataset.",
+  totalEmploymentNote:
+    "Total employment includes formal, informal, self-employed, agricultural, and non-agricultural workers. It should not be treated as only salaried private-sector employment.",
+  epfoNote:
+    "EPFO net subscribers are a proxy for formal employment and payroll formalisation. This does not represent total private-sector jobs.",
+  centralRecruitmentNote:
+    "Central government recruitment data tracks direct central government appointments. This does not include all state government recruitment.",
+  keyMetrics: {
+    totalEmploymentAdded: {
+      title: "Total Employment Added",
+      earlier: {
+        period: "Period 2004–2014",
+        valueCrore: 2.9,
+        display: "Approx. 2.9 crore",
+      },
+      later: {
+        period: "Period 2014–2024",
+        valueCrore: 17.2,
+        display: "Approx. 17.2 crore",
+      },
+      sourceType: "RBI KLEMS / PIB / SBI Ecowrap",
     },
-    organisedSectorEmployment: {
-      march2011Lakh: 289.99,
-      march2012Lakh: 295.79,
-      privateSector2004Lakh: 82.46,
-      privateSector2012Lakh: 119.7,
+    formalPayroll: {
+      title: "Formal Payroll Expansion",
+      earlier: {
+        period: "Period 2004–2014",
+        display: "Not available in comparable EPFO payroll format",
+      },
+      later: {
+        period: "September 2017–March 2024",
+        valueCrore: 6.2,
+        display: "6.2+ crore EPFO net subscribers",
+      },
+      sourceType: "EPFO payroll / PIB",
+    },
+    centralGovernmentRecruitment: {
+      title: "Central Government Recruitment",
+      earlier: {
+        period: "Period 2004–2013",
+        valueLakh: 6,
+        display: "Approx. 6 lakh",
+      },
+      later: {
+        period: "Period 2014–2023",
+        valueLakh: 9,
+        display: "Approx. 9 lakh",
+      },
+      sourceType: "PIB / New India Samachar / Rozgar Mela",
+    },
+    unemploymentRate: {
+      title: "Unemployment Rate Trend",
+      earlier: {
+        period: "2017–18",
+        valuePercent: 6.0,
+        display: "6.0%",
+      },
+      later: {
+        period: "2023–24",
+        valuePercent: 3.2,
+        display: "3.2%",
+      },
+      sourceType: "PLFS / PIB",
     },
   },
-  recent2014_2024: {
-    totalEmployment: [
-      { year: "2017-18", valueCrore: 47.5 },
-      { year: "2023-24", valueCrore: 64.33 },
-    ],
-    netJobsAddedCrore: 16.83,
-    unemploymentRate: [
-      { year: "2017-18", value: 6.0 },
-      { year: "2023-24", value: 3.2 },
-    ],
-    youthUnemploymentRate: [
-      { year: "2017-18", value: 17.8 },
-      { year: "2023-24", value: 10.2 },
-    ],
-    lfpr: [
-      { year: "2017-18", value: 49.8 },
-      { year: "2023-24", value: 60.1 },
-    ],
-    wpr: [
-      { year: "2017-18", value: 46.8 },
-      { year: "2023-24", value: 58.2 },
-    ],
-    womenWorkforce: {
-      femaleLfpr: [
-        { year: "2017-18", value: 23.3 },
-        { year: "2023-24", value: 41.7 },
-      ],
-      femaleWpr: [
-        { year: "2017-18", value: 22.0 },
-        { year: "2023-24", value: 40.3 },
-      ],
+  comparisonRows: [
+    {
+      indicator: "Total employment added",
+      earlierPeriod: "Approx. 2.9 crore jobs added during Period 2004–2014",
+      laterPeriod: "Approx. 17.2 crore jobs added during Period 2014–2024",
+      dataType: "Broad total-employment estimate",
+      source: "RBI KLEMS / PIB / SBI Ecowrap",
+      sourceUrl: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2035280",
+      notes:
+        "Includes formal, informal, self-employed, agricultural and non-agricultural workers. Do not read this as only salaried private-sector employment.",
     },
-    formalEmployment: {
-      epfoNetSubscribers: [
-        { year: "2018-19", valueLakh: 61.12, display: "61.12 lakh" },
-        { year: "2024-25", valueCrore: 1.29, display: "1.29 crore" },
-      ],
-      cumulativeEpfoSubscribersCrore: 7.73,
-      femaleEpfoSubscribers2024_25Lakh: 26.9,
+    {
+      indicator: "Formal payroll / EPFO net subscribers",
+      earlierPeriod: "Not available in comparable EPFO payroll format",
+      laterPeriod: "6.2+ crore net EPFO subscribers, September 2017–March 2024",
+      dataType: "Formal-sector payroll proxy",
+      source: "EPFO payroll / PIB",
+      sourceUrl: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2174773&reg=3&lang=2",
+      notes:
+        "EPFO payroll starts later and is a proxy for formal employment and payroll formalisation, not total private-sector jobs.",
     },
-    employmentQuality: {
-      selfEmployment: [
-        { year: "2017-18", value: 52.2 },
-        { year: "2023-24", value: 58.4 },
-      ],
-      casualLabour: [
-        { year: "2017-18", value: 24.9 },
-        { year: "2023-24", value: 19.8 },
-      ],
+    {
+      indicator: "Central government recruitment",
+      earlierPeriod: "Approx. 6 lakh appointments during Period 2004–2013",
+      laterPeriod: "Approx. 9 lakh appointments during Period 2014–2023",
+      dataType: "Direct central government appointments",
+      source: "PIB / Rozgar Mela / New India Samachar",
+      sourceUrl: "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=1929384&lang=1&reg=3",
+      notes: "This does not include all state government recruitment.",
     },
-    wageGrowth: {
-      casualLabourDailyWage: [
-        { period: "Jul-Sep 2017", value: 294 },
-        { period: "Apr-Jun 2024", value: 433 },
-      ],
-      regularSalariedMonthlyEarnings: [
-        { period: "Jul-Sep 2017", value: 16538 },
-        { period: "Apr-Jun 2024", value: 21103 },
-      ],
+    {
+      indicator: "Unemployment rate trend",
+      earlierPeriod: "PLFS annual series starts at 6.0% in 2017–18",
+      laterPeriod: "3.2% in 2023–24",
+      dataType: "PLFS labour-market trend indicator",
+      source: "PLFS / PIB",
+      sourceUrl: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2174773&reg=3&lang=2",
+      notes:
+        "Use as a trend indicator because comparable PLFS annual unemployment data starts from 2017–18.",
     },
-    emergingEmployment: {
-      gigWorkforce: [
-        { year: "2024-25", valueCrore: 1 },
-        { year: "2029-30 projected", valueCrore: 2.35 },
-      ],
-      startups: {
-        dpiitRecognized: 190000,
-        jobsCreated: 1700000,
-      },
-      gccs: {
-        centres: 1700,
-        employment: 2000000,
-      },
+    {
+      indicator: "Private-sector jobs created",
+      earlierPeriod: "No single clean official number",
+      laterPeriod: "No single clean official number",
+      dataType: "Data limitation",
+      source: "RBI KLEMS / EPFO / PLFS",
+      sourceUrl: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2035280",
+      notes:
+        "RBI KLEMS is the broadest total-employment dataset. EPFO is the best available formal/private payroll proxy from September 2017 onward.",
     },
-  },
+  ] satisfies EmploymentComparisonRow[],
   verificationEvidence: [
     {
-      label: "PIB Employment Backgrounder 2025",
-      period: "2017-18 to 2024-25",
+      label: "PIB press release on employment and RBI KLEMS",
+      period: "Period 2014–2024 context",
+      sourceUrl: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2035280",
+      sourceType: "PIB",
+      note: "Public PIB source used for RBI KLEMS employment context and total-employment references.",
+    },
+    {
+      label: "SBI Ecowrap employment comparison",
+      period: "FY04–FY14 and FY14–FY23",
+      sourceUrl:
+        "https://sbi.bank.in/documents/13958/43951007/100724-Ecowrap_20240710.pdf/b4d127c1-3d48-2704-36ef-a22accafcfb9?t=1720591608435",
+      sourceType: "SBI Ecowrap",
+      note: "Public SBI Ecowrap PDF citing RBI KLEMS employment additions for earlier and later periods.",
+    },
+    {
+      label: "PIB Employment Backgrounder / PLFS unemployment",
+      period: "2017–18 to 2023–24",
       sourceUrl:
         "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2174773&reg=3&lang=2",
-      sourceType: "PIB",
-      note: "Public PIB source used for PLFS employment, unemployment, women workforce participation, EPFO payroll and wage-growth indicators.",
+      sourceType: "PLFS",
+      note: "Public PIB source used for PLFS unemployment trend and EPFO payroll context.",
     },
     {
-      label: "NSSO / Labour Ministry historical employment indicators",
-      period: "2004-05 to 2011-12",
-      sourceUrl: "https://labour.gov.in/",
-      sourceType: "NSSO / Labour Ministry",
-      note: "Historical employment and unemployment indicators for the earlier period are recorded separately because the survey system differs from PLFS.",
+      label: "PIB / Rozgar Mela reference",
+      period: "Central recruitment context",
+      sourceUrl:
+        "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=1929384&lang=1&reg=3",
+      sourceType: "Rozgar Mela",
+      note: "Public PIB source used for direct central government recruitment context.",
     },
     {
-      label: "PLFS / MoSPI labour force references",
-      period: "2017-18 to 2023-24",
-      sourceUrl: "https://mospi.gov.in/",
-      sourceType: "PLFS / Administrative",
-      note: "PLFS and administrative references provide the later-period labour-force, workforce participation and formal payroll context.",
+      label: "New India Samachar central recruitment comparison",
+      period: "2004–2013 and 2014–2023",
+      sourceUrl:
+        "https://newindiasamachar.pib.gov.in/WriteReadData/Magazine//2023/Aug/M202308161.pdf",
+      sourceType: "New India Samachar",
+      note: "Public magazine PDF reference for central government recruitment comparison.",
     },
   ] satisfies EmploymentSourceEvidence[],
 };
